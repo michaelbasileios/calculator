@@ -15,3 +15,17 @@ function operate(x, y, operation) {
   
     return operation in operators ? operators[operation](x, y) : NaN
   }
+
+  const numBtn = document.querySelectorAll('.number-btn');
+  const outputFld = document.querySelector('#output-field');
+
+
+  numBtn.forEach(btn => {
+    btn.addEventListener('click', numInput);
+  })
+
+  function numInput(e) {
+    const num1 = e.target.innerText;
+    outputFld.innerText = num1;
+  }
+
