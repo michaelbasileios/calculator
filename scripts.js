@@ -18,6 +18,10 @@ function operate(x, y, operation) {
 
   const numBtn = document.querySelectorAll('.number-btn');
   const outputFld = document.querySelector('#output-field');
+  //CLEAR BTN CODE
+  document.querySelector('#clear-btn').addEventListener('click', () => {
+    outputFld.innerText = '';
+  })
 
 
   numBtn.forEach(btn => {
@@ -26,6 +30,6 @@ function operate(x, y, operation) {
 
   function numInput(e) {
     const num1 = e.target.innerText;
-    outputFld.innerText = num1;
+    outputFld.innerText += num1;
   }
 
