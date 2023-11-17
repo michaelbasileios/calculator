@@ -38,3 +38,10 @@ function numInput(e) {
   inputField.value += num1;
 }
 
+//CODE TO SET OPERATOR
+operatorBtn.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    operator = e.target.value;
+    console.log(operator);
+  })
+})
