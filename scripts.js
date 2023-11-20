@@ -1,7 +1,8 @@
 //BASIC OPS CODE
-let num1;
-let num2;
-let operator = "";
+let num1 = '';
+let num2 = '';
+let result = '';
+let operator = '';
 
 function operate(x, y, operation) {
     const operators = {
@@ -34,8 +35,8 @@ numBtn.forEach(btn => {
 })
 
 function numInput(e) {
-  const num1 = e.target.innerText;
-  inputField.value += num1;
+  const userNum = e.target.innerText;
+  inputField.value += userNum;
 }
 
 //CODE TO SET OPERATOR
@@ -43,5 +44,18 @@ operatorBtn.forEach(btn => {
   btn.addEventListener('click', (e) => {
     operator = e.target.value;
     console.log(operator);
+
+    if (num1 == '' && num2 == '') {
+      num1 = inputField.value;
+      console.log(num1);
+    }
+    else if (num1 && num2 == '') {
+      num2 = inputField.value;
+      console.log(num2);
+    }
+    else {
+      result = operate(+num1, +num2, operator);
+      console.log(result);
+    }
   })
 })
