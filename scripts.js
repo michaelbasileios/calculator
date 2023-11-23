@@ -49,16 +49,18 @@ operatorBtn.forEach(btn => {
     if (operator) {
       if (num1 && num2) {
         result = operate(+num1, +num2, operator);
-        outputField.innerText = result;
         num1 = result;
+        outputField.innerText = num1;
+        inputField.value = '';
         operator = '';
         console.log({num1, num2, operator, result});
       }
       else if (num1 && num2 == '') {
         num2 = inputField.value;
         result = operate(+num1, +num2, operator);
-        outputField.innerText = result;
         num1 = result;
+        outputField.innerText = num1;
+        inputField.value = '';
         num2 = '';
         operator = '';
         console.log({num1, num2, operator, result});
@@ -66,10 +68,11 @@ operatorBtn.forEach(btn => {
     }
 
     operator = e.target.value;
-    console.log(operator);
 
     if (num1 == '' && num2 == '') {
       num1 = inputField.value;
+      outputField.innerText = num1;
+      inputField.value = '';
       console.log({num1, num2, operator, result});
     }
     else {
