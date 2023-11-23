@@ -51,15 +51,18 @@ operatorBtn.forEach(btn => {
 
     if (num1 == '' && num2 == '') {
       num1 = inputField.value;
-      console.log(num1);
+      console.log({num1, num2, operator, result});
     }
     else if (num1 && num2 == '') {
       num2 = inputField.value;
-      console.log(num2);
+      num1 = operate(+num1, +num2, operator);
+      console.log({num1, num2, operator, result});
     }
     else {
       result = operate(+num1, +num2, operator);
-      console.log(result);
+      console.log({num1, num2, operator, result});
     }
   })
 })
+
+//CODE FOR EQUALS BUTTON
