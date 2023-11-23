@@ -27,6 +27,10 @@ const outputField = document.querySelector('#output-field');
 document.querySelector('#clear-btn').addEventListener('click', () => {
   inputField.value = '';
   outputField.innerText = '';
+  num1 = '';
+  num2 = '';
+  result = '';
+  operator = '';
 })
 
 //CODE TO DISPLAY USER INPUT NUMBERS
