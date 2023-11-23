@@ -46,16 +46,30 @@ function numInput(e) {
 //CODE TO SET OPERATOR
 operatorBtn.forEach(btn => {
   btn.addEventListener('click', (e) => {
+    if (operator) {
+      if (num1 && num2) {
+        result = operate(+num1, +num2, operator);
+        outputField.innerText = result;
+        num1 = result;
+        operator = '';
+        console.log({num1, num2, operator, result});
+      }
+      else if (num1 && num2 == '') {
+        num2 = inputField.value;
+        result = operate(+num1, +num2, operator);
+        outputField.innerText = result;
+        num1 = result;
+        num2 = '';
+        operator = '';
+        console.log({num1, num2, operator, result});
+      }
+    }
+
     operator = e.target.value;
     console.log(operator);
 
     if (num1 == '' && num2 == '') {
       num1 = inputField.value;
-      console.log({num1, num2, operator, result});
-    }
-    else if (num1 && num2 == '') {
-      num2 = inputField.value;
-      num1 = operate(+num1, +num2, operator);
       console.log({num1, num2, operator, result});
     }
     else {
