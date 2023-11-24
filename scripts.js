@@ -16,6 +16,7 @@ function operate(x, y, operation) {
     }
     if (operation == '/' && y == 0) {
       alert(`Hey that's illegal!`);
+      return;
     }
     return operation in operators ? operators[operation](x, y) : NaN
   }
@@ -84,12 +85,15 @@ operatorBtn.forEach(btn => {
 
 //CODE FOR EQUALS BUTTON
 equalsBtn.addEventListener('click', () => {
-    num2 = inputField.value;
-    result = operate(+num1, +num2, operator);
-    num1 = result;
-    num2 = '';
-    operator = '';
-    outputField.innerText = num1;
-    inputField.value = '';
-    console.log({num1, num2, operator, result});
+  if (num1 === '' || operator === '') {
+   return;
+  }
+  num2 = inputField.value;
+  result = operate(+num1, +num2, operator);
+  num1 = result;
+  num2 = '';
+  operator = '';
+  outputField.innerText = num1;
+  inputField.value = '';
+  console.log({num1, num2, operator, result});
 })
