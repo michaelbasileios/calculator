@@ -14,9 +14,8 @@ function operate(x, y, operation) {
       '%': (a, b) => a % b,
       '**': (a, b) => a ** b
     }
-    if (operation == '/' && y == 0) {
-      alert(`Hey that's illegal!`);
-      return;
+    if (operation == '/' && y === 0) {
+      return `Hey that's illegal!`;
     }
     return operation in operators ? operators[operation](x, y) : NaN
   }
@@ -48,7 +47,7 @@ function numInput(e) {
   inputField.value += userNum;
 }
 
-//CODE TO SET OPERATOR
+//CODE FOR OPERATOR BUTTONS
 operatorBtn.forEach(btn => {
   btn.addEventListener('click', (e) => {
     if (operator) {
