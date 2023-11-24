@@ -34,6 +34,7 @@ document.querySelector('#clear-btn').addEventListener('click', () => {
   num2 = '';
   result = '';
   operator = '';
+  console.clear();
 })
 
 //CODE TO DISPLAY USER INPUT NUMBERS
@@ -56,6 +57,7 @@ operatorBtn.forEach(btn => {
         outputField.innerText = num1;
         inputField.value = '';
         operator = '';
+        num2 = '';
         console.log({num1, num2, operator, result});
       }
       else if (num1 && num2 == '') {
@@ -64,7 +66,6 @@ operatorBtn.forEach(btn => {
         num1 = result;
         outputField.innerText = num1;
         inputField.value = '';
-        // num2 = '';
         operator = '';
         console.log({num1, num2, operator, result});
       }
@@ -78,10 +79,6 @@ operatorBtn.forEach(btn => {
       inputField.value = '';
       console.log({num1, num2, operator, result});
     }
-    else {
-      result = operate(+num1, +num2, operator);
-      console.log({num1, num2, operator, result});
-    }
   })
 })
 
@@ -90,6 +87,7 @@ equalsBtn.addEventListener('click', () => {
     num2 = inputField.value;
     result = operate(+num1, +num2, operator);
     num1 = result;
+    num2 = '';
     operator = '';
     outputField.innerText = num1;
     inputField.value = '';
