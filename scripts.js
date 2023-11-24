@@ -4,6 +4,7 @@ let num2 = '';
 let result = '';
 let operator = '';
 
+//CORE FUNCTION
 function operate(x, y, operation) {
     const operators = {
       '+': (a, b) => a + b,
@@ -13,7 +14,9 @@ function operate(x, y, operation) {
       '%': (a, b) => a % b,
       '**': (a, b) => a ** b
     }
-  
+    if (operation == '/' && y == 0) {
+      alert(`Hey that's illegal!`);
+    }
     return operation in operators ? operators[operation](x, y) : NaN
   }
 
@@ -61,7 +64,7 @@ operatorBtn.forEach(btn => {
         num1 = result;
         outputField.innerText = num1;
         inputField.value = '';
-        num2 = '';
+        // num2 = '';
         operator = '';
         console.log({num1, num2, operator, result});
       }
