@@ -96,3 +96,13 @@ equalsBtn.addEventListener('click', () => {
   inputField.value = '';
   console.log({num1, num2, operator, result});
 })
+
+//CODE TO CHECK FOR DECIMAL POINT
+function checkDecimal(userNum) {
+	return String(userNum).split('').includes(".");
+}
+
+//CODE TO FIX DECIMAL PLACES
+function fixedDecimal(userNum) {
+	return checkDecimal(userNum) ? userNum.toFixed(3) : userNum;
+}
