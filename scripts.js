@@ -89,7 +89,7 @@ equalsBtn.addEventListener('click', () => {
   }
   num2 = inputField.value;
   result = operate(+num1, +num2, operator);
-  num1 = result;
+  num1 = fixedDecimal(result);
   num2 = '';
   operator = '';
   outputField.innerText = num1;
@@ -98,11 +98,16 @@ equalsBtn.addEventListener('click', () => {
 })
 
 //CODE TO CHECK FOR DECIMAL POINT
-function checkDecimal(userNum) {
-	return String(userNum).split('').includes(".");
+function checkDecimal(n) {
+	return String(n).split('').includes(".");
 }
 
 //CODE TO FIX DECIMAL PLACES
-function fixedDecimal(userNum) {
-	return checkDecimal(userNum) ? userNum.toFixed(3) : userNum;
-}
+function fixedDecimal(n) {
+	if (checkDecimal(n)) {
+		const numArray = String(n).split('');
+		return ((numArray.slice(numArray.indexOf('.')+1)).length > 10) 
+    ? n.toFixed(10) 
+    : n;
+		}
+} 
