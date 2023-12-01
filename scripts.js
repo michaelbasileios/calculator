@@ -59,7 +59,7 @@ operatorBtn.forEach(btn => {
     if (operator) {
       if (num1 && num2) {
         result = operate(+num1, +num2, operator);
-        num1 = result;
+        num1 = fixedDecimal(result);
         outputField.innerText = num1;
         inputField.value = '';
         operator = '';
@@ -69,7 +69,7 @@ operatorBtn.forEach(btn => {
       else if (num1 && num2 == '') {
         num2 = inputField.value;
         result = operate(+num1, +num2, operator);
-        num1 = result;
+        num1 = fixedDecimal(result);
         outputField.innerText = num1;
         inputField.value = '';
         operator = '';
@@ -116,4 +116,5 @@ function fixedDecimal(n) {
     ? n.toFixed(10) 
     : n;
 		}
+  else return n;
 } 
