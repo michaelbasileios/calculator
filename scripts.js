@@ -26,7 +26,13 @@ const operatorBtn = document.querySelectorAll('.op-btn');
 const equalsBtn = document.querySelector('#equals-btn')
 const inputField = document.querySelector('#user-input');
 const outputField = document.querySelector('#output-field');
-  
+
+//BACKSPACE BTN CODE
+document.querySelector('#backspc-btn').addEventListener('click', (e) => {
+  let inputFieldValue = inputField.value;
+  inputField.value = inputFieldValue.substring(0, inputFieldValue.length - 1);
+})
+
 //CLEAR BTN CODE
 document.querySelector('#clear-btn').addEventListener('click', () => {
   inputField.value = '';
