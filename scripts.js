@@ -1,4 +1,4 @@
-//BASIC OPS CODE
+//BASIC VARIABLES
 let num1 = '';
 let num2 = '';
 let result = '';
@@ -35,10 +35,11 @@ document.querySelector('#clear-btn').addEventListener('click', () => {
   num2 = '';
   result = '';
   operator = '';
+  decimalBtn.disabled = false;
   console.clear();
 })
 
-//CODE TO DISPLAY USER INPUT NUMBERS
+//DISPLAY USER INPUT NUMBERS
 numBtn.forEach(btn => {
   btn.addEventListener('click', numInput);
 })
@@ -48,12 +49,13 @@ function numInput(e) {
   inputField.value += userNum;
 }
 
-//CODE FOR DECIMAL BUTTON
+//DECIMAL BUTTON
 decimalBtn.addEventListener('click', (e) =>{
   inputField.value += ".";
+  decimalBtn.disabled = true;
 })
 
-//CODE FOR OPERATOR BUTTONS
+//OPERATOR BUTTONS
 operatorBtn.forEach(btn => {
   btn.addEventListener('click', (e) => {
     if (operator) {
@@ -61,6 +63,7 @@ operatorBtn.forEach(btn => {
         result = operate(+num1, +num2, operator);
         num1 = fixedDecimal(result);
         outputField.innerText = num1;
+        decimalBtn.disabled = false;
         inputField.value = '';
         operator = '';
         num2 = '';
@@ -71,6 +74,7 @@ operatorBtn.forEach(btn => {
         result = operate(+num1, +num2, operator);
         num1 = fixedDecimal(result);
         outputField.innerText = num1;
+        decimalBtn.disabled = false;
         inputField.value = '';
         operator = '';
         console.log({num1, num2, operator, result});
@@ -82,13 +86,14 @@ operatorBtn.forEach(btn => {
     if (num1 == '' && num2 == '') {
       num1 = inputField.value;
       outputField.innerText = num1;
+      decimalBtn.disabled = false;
       inputField.value = '';
       console.log({num1, num2, operator, result});
     }
   })
 })
 
-//CODE FOR EQUALS BUTTON
+//EQUALS BUTTON
 equalsBtn.addEventListener('click', () => {
   if (num1 === '' || operator === '') {
    return;
@@ -96,6 +101,7 @@ equalsBtn.addEventListener('click', () => {
   num2 = inputField.value;
   result = operate(+num1, +num2, operator);
   num1 = fixedDecimal(result);
+  decimalBtn.disabled = false;
   num2 = '';
   operator = '';
   outputField.innerText = num1;
@@ -103,12 +109,12 @@ equalsBtn.addEventListener('click', () => {
   console.log({num1, num2, operator, result});
 })
 
-//CODE TO CHECK FOR DECIMAL POINT
+//CHECK FOR DECIMAL POINT
 function checkDecimal(n) {
 	return String(n).includes(".");
 }
 
-//CODE TO FIX DECIMAL PLACES
+//FIX DECIMAL PLACES
 function fixedDecimal(n) {
 	if (checkDecimal(n)) {
 		const numberString = String(n);
