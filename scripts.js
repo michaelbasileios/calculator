@@ -21,6 +21,7 @@ function operate(x, y, operation) {
   }
 
 const numBtn = document.querySelectorAll('.number-btn');
+const decimalBtn = document.querySelector('#decimal-btn');
 const operatorBtn = document.querySelectorAll('.op-btn');
 const equalsBtn = document.querySelector('#equals-btn')
 const inputField = document.querySelector('#user-input');
@@ -46,6 +47,11 @@ function numInput(e) {
   const userNum = e.target.innerText;
   inputField.value += userNum;
 }
+
+//CODE FOR DECIMAL BUTTON
+decimalBtn.addEventListener('click', (e) =>{
+  inputField.value += ".";
+})
 
 //CODE FOR OPERATOR BUTTONS
 operatorBtn.forEach(btn => {
@@ -99,14 +105,14 @@ equalsBtn.addEventListener('click', () => {
 
 //CODE TO CHECK FOR DECIMAL POINT
 function checkDecimal(n) {
-	return String(n).split('').includes(".");
+	return String(n).includes(".");
 }
 
 //CODE TO FIX DECIMAL PLACES
 function fixedDecimal(n) {
 	if (checkDecimal(n)) {
-		const numArray = String(n).split('');
-		return ((numArray.slice(numArray.indexOf('.')+1)).length > 10) 
+		const numberString = String(n);
+		return ((numberString.substring(numberString.indexOf('.')+1)).length > 10) 
     ? n.toFixed(10) 
     : n;
 		}
